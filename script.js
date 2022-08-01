@@ -68,8 +68,10 @@ function playRound(a,b){
 let playerWins = 0;
 let computerWins = 0;
 const playerSelection = document.querySelectorAll('button');
+const winner = document.querySelector('#winner');
 playerSelection.forEach((button) => 
     button.addEventListener('click',() =>{
+        winner.textContent = '';
         let compChoice = getComputerChoice();
         let playerChoice = button.id;
         let a = playRound(playerChoice,compChoice);
@@ -83,15 +85,17 @@ playerSelection.forEach((button) =>
         const score = document.querySelector('#score');
         score.textContent = `${playerWins} - ${computerWins}`
         if(playerWins >4 || computerWins>4){
-            playerWins = 0;
-            computerWins = 0;
-            const winner = document.querySelector('#winner');
             if(playerWins > computerWins){
                 winner.textContent = 'you win';
-            }else{
+            }else if(computerWins > playerWins){
                 winner.textContent = 'you lose';
             }
-            return;
+            playerWins = -1;
+            computerWins = -1;
+        }
+        if(playerWins == -1 || computerWins == -1){
+            playerWins = 0;
+            computerWins = 0;
         }
     })
 );
