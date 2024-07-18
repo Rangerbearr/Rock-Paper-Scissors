@@ -90,10 +90,6 @@ playerSelection.forEach((button) =>
             }else if(computerWins > playerWins){
                 winner.textContent = 'you lose';
             }
-            playerWins = -1;
-            computerWins = -1;
-        }
-        if(playerWins == -1 || computerWins == -1){
             playerWins = 0;
             computerWins = 0;
         }
